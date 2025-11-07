@@ -42,38 +42,45 @@ nav a:hover{
 }
 
 .productos{
-	width: 940px;
-	margin: 0 auto;
-	padding: 50px;
-	display: flex;
+    max-width: 940px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px 16px;
+    display: flex;
     gap: 1rem;
-	list-style: none;
+    list-style: none;
     align-items: stretch;
+    flex-wrap: wrap;           /* permite que los items bajen de línea */
+    justify-content: space-between;
+    box-sizing: border-box;
 }
 
 .productos li{
-	flex: 1 1 0;
+    /* layout flexible: ocupa al menos 280px y crece según espacio */
+    flex: 1 1 280px;
+    min-width: 220px;
     display: flex;
-	flex-direction: column;
-	align-items: center;
-	text-align: center;
-	width: 30%;
-	vertical-align: top;
-	margin: 0 1.5%;
-	padding: 30px 20px;
-	box-sizing: border-box;
-	border: 2px solid black;
-	border-radius: 10px;
-	min-height: 300px; /* ajustar según diseño */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    vertical-align: top;
+    margin: 0;                 /* el gap se encarga del espacio */
+    padding: 20px;
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-radius: 10px;
+    min-height: 260px;
 }
 
 .productos img{
-    width: 140px;       /* tamaño fijo o usar max-width */
-    height: 140px;
-    object-fit: contain; /* mantiene proporción sin recortar */
+    max-width: 140px; /* tamaño máximo en escritorio */
+    width: 100%;      
+    height: auto;
+    object-fit: contain;
     display: block;
     margin-bottom: 0.5rem;
 }
+
 
 .producto-precio{
     margin-top: auto; /* empuja el precio al final para igualar alturas visuales */
@@ -218,6 +225,16 @@ td, th{
 	float: left;
 	margin: 0 20px 20px 0;
 }
+/*mapa alinear al centro*/
+
+.mapa-contenido iframe{
+	width: 80%;
+	height: 450px;
+	border: 0;
+	text-align: center;
+	display: block;
+	margin: 0 auto;
+}
 
 .mapa{
 	padding: 3em 0;
@@ -228,14 +245,10 @@ td, th{
 .mapa p{
 	margin: 0 0 2em;
 	text-align: center;
+
 }
 
-.mapa-contenido{
-	width: 940px;
-	margin: 0 auto;
-	/*Alineacion centrada del mapa*/
-	text-align: center;
-}
+
 
 
 .diferenciales{
@@ -335,9 +348,7 @@ td, th{
 		margin: 10% 0;
 	}
 
-	.mapa{
-		padding: 0;
-	}
+	
 
 	.lista-diferenciales, .imagen-diferenciales{
 		width: 100%;
