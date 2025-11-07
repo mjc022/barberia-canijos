@@ -246,6 +246,10 @@ td, th{
 .contenido-diferenciales{
 	width: 640px;
 	margin: 2.5em auto 0;
+	display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap; /* permite pasar a nueva línea en pantallas pequeñas */
 }
 
 /*La imagen tiene el 60%, la lista ocupara el 40% de los 640px definididos para todo el bloque contenido-diferenciales*/
@@ -254,6 +258,9 @@ td, th{
 	width: 40%;
 	display: inline-block; /*inline-block hace una lectura del codigo HTML, si lo coloco todo seguido sin saltos del linea, dara el efecto deseado*/
 	vertical-align: top;
+	flex: 1 1 320px; /* ocupa el espacio disponible */
+  margin: 0;
+  padding: 0 1rem 0 0;
 }
 
 .items{
@@ -282,6 +289,24 @@ td, th{
 	margin: 1.2em auto;
 }
 
+
+.barberia{
+    width: 100%;
+    height: clamp(180px, 28vh, 360px); /* ajusta min / ideal / max */
+    display: block;
+    object-fit: cover; /* recorta sin deformar */
+    object-position: center center;
+}
+
+/* imagen al lado derecho, tamaño controlado */
+.imagen-barberia2{
+  flex: 0 0 320px; /* ancho fijo sugerido en escritorio */
+  max-width: 40%;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
 
 /* ---------- CSS RESPONSIVE --------- */
 
@@ -324,6 +349,13 @@ td, th{
 	.titulo-principal{
 		text-decoration: underline 0.5px;
 	}
+}
+
+/* responsive: apilar en móvil */
+@media (max-width: 900px){
+  .contenido-diferenciales{ align-items: flex-start; }
+  .imagen-barberia2{ flex: 0 0 100%; max-width: 100%; order: 2; margin-top: .75rem; }
+  .lista-diferenciales{ flex: 1 1 100%; }
 }
 
 /* WhatsApp floating button */
