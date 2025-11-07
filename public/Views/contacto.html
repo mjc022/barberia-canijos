@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<link rel="stylesheet" href="../Tools/reset.css">
+		<link rel="stylesheet" href="../CSS/style.css">
+		<title>Contacto - Barberia Canijos</title>
+	</head>
+	<body>
+		<header>
+			<div class="caja">
+				<h1><img src="../Images/logo.jpg" alt="Logo de Barberia Canijos"></h1>
+				<nav>
+					<ul>
+						<li><a href="../index.html">Home</a></li>
+						<li><a href="productos.html">Productos</a></li>
+						<li><a href="contacto.html">Contacto</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<main class="main-contacto">
+
+  <!-- contenedor: formulario + CTA lateral -->
+  <div class="contact-grid">
+    <form id="contactoForm">
+        <label for="nombre_apellido">Nombre y Apellido</label>
+        <input type="text" id="nombre_apellido" name="nombre" class="input-padron" placeholder="John Doe" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" class="input-padron" placeholder="email@dominio.com" required>
+
+        <label for="telefono">Telefono</label>
+        <input type="tel" id="telefono" name="telefono" class="input-padron" placeholder="(XX) XXXX XXXX" required>
+
+        <label for="mensaje">Mensaje</label>
+        <textarea cols="70" rows="10" id="mensaje" name="mensaje" class="input-padron" required></textarea>
+				
+
+				<fieldset>
+                    <legend>¿Cómo le gustaría que lo contactemos?</legend>
+                    <label for="radio-email"><input type="radio" value="Email" id="radio-email" name="contacto"> Email</label>
+                    <label for="radio-telefono"><input type="radio" value="Teléfono" id="radio-telefono" name="contacto"> Teléfono</label>
+                    <label for="radio-wpp"><input type="radio" value="WhatsApp" id="radio-wpp" name="contacto" checked> WhatsApp</label>
+                </fieldset>
+
+				<fieldset>
+                    <legend>¿En cuál horario prefiere ser atendido?</legend>
+                    <select id="horario" name="horario" class="input-padron" required>
+                        <option value="Mañana">Mañana</option>
+                        <option value="Tarde">Tarde</option>
+                        <option value="Noche">Noche</option>
+                    </select>
+                </fieldset>
+
+				<label class="checkbox"><input type="checkbox" checked>¿Le gustaría recibir novedades de la Barberia Canijos?</label>
+ 
+				<input type="submit" value="Enviar Formulario" class="enviar">
+			</form>
+  </div>
+
+			<table class="tabla-contacto">
+				<thead>				
+					<tr>
+						<th>Dia</th>					
+						<th>Horario</th>					
+					</tr>
+				</thead>
+				<tbody>					
+					<tr>
+						<td>Lunes</td>					
+						<td>08h ~ 20h</td>					
+					</tr>
+					<tr>
+						<td>Martes</td>					
+						<td>08h ~ 20h</td>					
+					</tr>
+					<tr>
+						<td>Miércoles</td>					
+						<td>08h ~ 20h</td>					
+					</tr>
+					<tr>
+						<td>Jueves</td>					
+						<td>08h ~ 20h</td>					
+					</tr>
+					<tr>
+						<td>Viernes</td>					
+						<td>08h ~ 20h</td>					
+					</tr>
+				</tbody>
+			</table>
+		</main>
+
+        <!-- Calendly: colocarlo dentro del body -->
+        <section class="calendly-section" aria-label="Reservar turno">
+            <h3 class="sr-only">Reservar turno</h3>
+            <div class="calendly-inline-widget"
+                 data-url="https://calendly.com/max297155168429/30min"
+                 style="min-width:320px;height:630px;"></div>
+        </section>
+
+        <footer>
+            <img src="../Images/icon-logo-white.png" alt="Logo de la Barberia Canijos" class="footer-logo">
+            <p class="copyright">&copy; Barberia Canijos - 2025</p>
+            <script>
+                const form = document.getElementById("contactoForm");
+                form.addEventListener("submit", async (e) => {
+                    e.preventDefault();
+                    const data = {
+                        nombre: form.nombre.value,
+                        email: form.email.value,
+                        telefono: form.telefono.value,
+                        mensaje: form.mensaje.value,
+                        horario: form.horario.value,
+                        contacto: form.contacto ? form.contacto.value : '' // medio elegido
+                    };
+                    const res = await fetch("/enviar", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(data),
+                    });
+                    const result = await res.json();
+                    if (result.success) {
+                        alert("✅ Mensaje enviado correctamente. ¡Gracias por contactarnos!");
+                        form.reset();
+                    } else {
+                        alert("❌ Hubo un problema al enviar el mensaje. Intenta más tarde.");
+                    }
+                });
+            </script>
+        </footer>
+
+        <!-- Calendly script: cargar sólo una vez -->
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+    </body>
+</html>
+
+<style>
+/* layout: formulario + CTA lateral */
+.contact-grid{
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin: 1.2rem 0;
+}
+/* formulario ocupa espacio flexible */
+.contact-grid form{
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+/* accesibilidad: ocultar título solo visualmente */
+.sr-only{
+  position:absolute!important;
+  width:1px;height:1px;
+  padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;border:0;
+}
+
+/* responsive: apilar en pantallas pequeñas */
+@media (max-width: 900px){
+  .contact-grid{ flex-direction: column; }
+  .whatsapp-contact{ flex: 0 0 auto; width: 100%; max-width: none; text-align: center; }
+  .whatsapp-contact__btn{ width: 100%; justify-content: center; }
+}
+/* adaptaciones móviles */
+@media (max-width:600px){
+  .whatsapp-contact__btn{ width:100%; justify-content:center; padding:1rem; font-size:1rem; border-radius:8px; }
+  .whatsapp-contact{ padding:0 1rem; }
+}
+</style>
