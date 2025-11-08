@@ -219,11 +219,20 @@ td, th{
 .principal em{
 	font-style: italic;
 }
-
-.Exterior{
-	width: 240px;
+.Exterior {
+	width: 250px;
 	float: left;
 	margin: 0 20px 20px 0;
+}
+
+@media screen and (max-width: 480px) {
+	.Exterior {
+		float: none;
+		width: 100%;
+		max-width: 300px;
+		margin: 0 auto 20px;
+		display: block;
+	}
 }
 /*mapa alinear al centro*/
 
