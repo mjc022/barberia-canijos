@@ -220,8 +220,8 @@ td, th{
 	font-style: italic;
 }
 
-.utensilios{
-	width: 120px;
+.Exterior{
+	width: 240px;
 	float: left;
 	margin: 0 20px 20px 0;
 }
@@ -297,19 +297,13 @@ td, th{
 	opacity: 0.3;
 }
 
+/*video*/
 .video{
 	width: 640px;
 	margin: 1.2em auto;
 }
 
 
-.barberia{
-    width: 100%;
-    height: clamp(180px, 28vh, 360px); /* ajusta min / ideal / max */
-    display: block;
-    object-fit: cover; /* recorta sin deformar */
-    object-position: center center;
-}
 
 /* imagen al lado derecho, tamaño controlado */
 .imagen-barberia2{
