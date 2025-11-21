@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 
 app.post("/enviar", async (req, res) => {
-  const { nombre, email, telefono, mensaje, horario, contacto } = req.body;
+  const { nombre, email, telefono, mensaje, horario, turnos } = req.body;
 
   const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -32,7 +32,7 @@ app.post("/enviar", async (req, res) => {
       from: `"Barbería Canijos" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_USER,
       subject: "Nuevo mensaje desde la web",
-      text: `Nombre: ${nombre}\nEmail: ${email}\nTeléfono: ${telefono}\nMedio de contacto: ${contacto}\nHorario: ${horario}\nMensaje: ${mensaje}`,
+      text: `Nombre: ${nombre}\nEmail: ${email}\nTeléfono: ${telefono}\nMedio de turnos: ${turnos}\nHorario: ${horario}\nMensaje: ${mensaje}`,
     });
     console.log("Correo enviado:", info);
     res.status(200).json({ success: true });

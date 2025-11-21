@@ -7,7 +7,7 @@ header{
 	padding: 20px 0;
 }
 
-.main-contacto{
+.main-turnos{
 	margin-left: 1em;
 }
 
@@ -41,7 +41,7 @@ nav a:hover{
 	text-decoration: underline;
 }
 
-.productos{
+.servicios{
     max-width: 940px;
     width: 100%;
     margin: 0 auto;
@@ -55,7 +55,7 @@ nav a:hover{
     box-sizing: border-box;
 }
 
-.productos li{
+.servicios li{
     /* layout flexible: ocupa al menos 280px y crece según espacio */
     flex: 1 1 280px;
     min-width: 220px;
@@ -72,7 +72,7 @@ nav a:hover{
     min-height: 260px;
 }
 
-.productos img{
+.servicios img{
     max-width: 140px; /* tamaño máximo en escritorio */
     width: 100%;      
     height: auto;
@@ -86,20 +86,20 @@ nav a:hover{
     margin-top: auto; /* empuja el precio al final para igualar alturas visuales */
 }
 
-.productos li:hover{
+.servicios li:hover{
 	border-color: #c78c19;
 }
 
-.productos li:active{
+.servicios li:active{
 	border-color: #088c19;
 }
 
-.productos h2{
+.servicios h2{
 	font-size: 26px;
 	font-weight: bold;
 }
 
-.productos li:hover h2{
+.servicios li:hover h2{
 	font-size: 29px;
 }
 
@@ -125,13 +125,24 @@ footer img{
 
 
 
-.copyright{
-	color: white;
-	font-size: 16px;
-	margin: 20px;
+.credito-vecteezy {
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
 }
 
-/*-------- CSS PARA CONTACTO -------- */
+.credito-vecteezy a {
+  color: #68a8ff;
+  text-decoration: underline;
+}
+
+.credito-vecteezy a:hover {
+  color: #a4c9ff;
+}
+
+
+/*-------- CSS PARA turnos -------- */
 
 form{
 	margin: 40px 0;
@@ -173,9 +184,29 @@ form label, form legend{
 	transform: scale(1.2);
 }
 
-.tabla-contacto{
-	margin: 40px 7%;
+.tabla-turnos{
+	margin: 20px 0%;
 	position: relative;
+}
+/* Por defecto (celular/tablet): mostrar solo la tabla mobile */
+.tabla-desktop {
+    display: none;
+}
+.tabla-mobile {
+    display: table;
+}
+
+/* En PC (901px o más): mostrar la desktop y ocultar la mobile */
+@media (min-width: 901px) {
+
+    .tabla-desktop {
+        display: table;
+        margin-top: 20px;
+    }
+
+    .tabla-mobile {
+        display: none;
+    }
 }
 
 thead{
@@ -287,11 +318,9 @@ td, th{
 
 .items{
 	line-height: 1.5;
-}
-
-.items:first-child{
 	font-weight: bold;
 }
+
 .items:before{
 	content:"★";
 }
@@ -342,12 +371,12 @@ td, th{
 		margin: 0 0;
 	}
 
-	.caja, .principal, .mapa-contenido, .contenido-diferenciales, .video, .productos, .productos li, .enviar{
+	.caja, .principal, .mapa-contenido, .contenido-diferenciales, .video, .servicios, .servicios li, .enviar{
 		width: auto;
 		margin: 0 auto;
 	}
 
-	.tabla-contacto{
+	.tabla-turnos{
 		margin: 10% 0;
 	}
 
@@ -374,32 +403,98 @@ td, th{
 
 /* WhatsApp floating button */
 .whatsapp-fab{
-  position: fixed;
-  right: 18px;
-  bottom: 20px;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: #25D366; /* whatsapp green */
-  color: #fff;
-  padding: 12px 14px;
-  border-radius: 999px;
-  box-shadow: 0 6px 18px rgba(37,211,102,0.18);
-  text-decoration: none;
-  font-weight: 600;
-  transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+  position:fixed;
+  right:18px;
+  bottom:20px;
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:#25D366;
+  color:#fff;
+  padding:10px 14px;
+  border-radius:999px;
+  box-shadow:0 6px 18px rgba(37,211,102,0.18);
+  text-decoration:none;
+  font-weight:600;
 }
-.whatsapp-fab:hover{ transform: translateY(-4px); box-shadow: 0 10px 22px rgba(37,211,102,0.22); }
-.whatsapp-fab svg{ display: block; flex-shrink: 0; }
-.whatsapp-fab .fab-text{ display: inline-block; font-family: inherit; font-size: 14px; line-height: 1; }
-
-/* ocultar texto en pantallas pequeñas (solo ícono) */
+.whatsapp-fab img{ display:block; width:22px; height:22px; }
+.whatsapp-fab .fab-text{ font-size:14px; color:#fff; }
 @media (max-width:480px){
-  .whatsapp-fab{ padding:10px; right:12px; bottom:14px; }
   .whatsapp-fab .fab-text{ display:none; }
 }
-/* opcional: no mostrar en pantallas muy grandes si preferís otro lugar */
-@media (min-width:1400px){
-  .whatsapp-fab{ right:32px; bottom:32px; }
+
+
+
+/* Layout turnos: formulario+tabla a la izquierda */
+/* Layout turnos */
+.turnos-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;   /* móvil = 1 sola columna */
+  gap: 1.5rem;
+  align-items: start;
+  max-width: 1100px;
+  margin: 1.2rem auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
 }
+
+@media (min-width: 901px){
+  .turnos-wrapper {
+    grid-template-columns: 1fr 380px; /* PC = 2 columnas */
+  }
+}
+
+/* Botón responsive */
+.btn-gcalendar {
+  display: block;
+  width: 90%;
+  background: #4285F4;
+  color: #fff;
+  text-align: center;
+  padding: 16px;
+  border-radius: 10px;
+  font-size: 22px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: .3s ease;
+  margin-top: 20px;
+}
+
+.btn-gcalendar:hover {
+  background: #3367D6;
+}
+
+
+
+.turnos-left{ min-width: 0; } /* evita overflow */
+.turnos-aside{ width: 90%; }
+/* PC: botón de turnos más abajo */
+@media (min-width: 901px) {
+  .btn-gcalendar {
+    margin-top: 10px; /* podés subir/bajar ajustando este número */
+  }
+}
+
+
+
+/* Hero: imagen principal, responsive y recortada sin deformar */
+.hero-wrapper{ width:100%; overflow:hidden; height:clamp(160px,28vh,360px); }
+.barberia{ width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
+
+.btn-gcalendar {
+  display: block;
+  background: #4285F4;
+  color: #fff;
+  text-align: center;
+  padding: 16px;
+  border-radius: 10px;
+  font-size: 22px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: .3s ease;
+}
+.btn-gcalendar:hover {
+  background: #3367D6;
+}
+

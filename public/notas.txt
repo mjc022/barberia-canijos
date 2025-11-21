@@ -1,0 +1,42 @@
+Descripción breve:
+Este proyecto es el sitio web de la barbería "Canijos". Contiene páginas estáticas (index, servicios, turnos) servidas desde /public 
+y un servidor Node/Express (server.js) que expone la ruta POST /enviar para recibir el formulario de turnos y reenviarlo por correo 
+mediante Nodemailer.
+
+Cómo funciona:
+- Cliente: HTML + CSS (public). index.html muestra hero, mapa y diferenciales; Views/servicios.html lista servicios; Views/turnos.html contiene el formulario y el widget de Calendly.
+- Interacción: el formulario envía JSON a POST /enviar (fetch). servicios pueden enlazar a turnos.html para solicitar turnos.
+- Servidor: server.js usa express para servir archivos estáticos y procesar /enviar; crea un transporter de Nodemailer con las credenciales en .env y manda el email al destinatario configurado.
+- Archivos principales:
+  - public/index.html, public/Views/servicios.html, public/Views/turnos.html
+  - public/CSS/style.css, public/Tools/reset.css
+  - server.js, .env (EMAIL_USER, EMAIL_PASS)
+  - package-lock.json / node_modules (dependencias)
+
+Instrucciones rápidas para ejecutar:
+1. En la raíz del proyecto: npm install
+2. Crear .env con EMAIL_USER y EMAIL_PASS (si Gmail: usar App Password).
+3. Iniciar servidor: node server.js
+4. Abrir: http://localhost:3000
+
+Dónde cambiar cosas importantes:
+- Cambiar destinatario del correo: editar server.js (campo "to" en sendMail) o establecer TO en .env si lo configuras.
+- Rutas de imágenes: carpeta public/Images — reemplazar archivos según nombres usados en HTML.
+- Mensajes y textos: editar los HTML en public/ y public/Views/.
+
+Problemas comunes y soluciones:
+- No llega correo: revisar logs del servidor (console), validar transporter.verify, comprobar credenciales SMTP y puertos, usar App Password para Gmail.
+- fetch a /enviar devuelve error: asegurarse de abrir vía servidor (http://localhost:3000) y no con file://.
+- Imágenes grandes o layout roto: eliminar anchos fijos en CSS (usar max-width y flex/grid), limpiar caché (Ctrl+F5).
+
+Sugerencias de mejora:
+- Añadir validación en el frontend y mostrar mensajes de estado al usuario.
+- Implementar reCAPTCHA o rate-limiting (ya recomendado).
+- Optimizar imágenes (WebP) y usar minificación de CSS/HTML para producción.
+- Guardar solicitudes en una base de datos o log para histórico.
+
+turnos técnico:
+- Servidor: node >= 18 compatible. Dependencias: express, nodemailer, body-parser, cors, dotenv.
+- Archivo principal del servidor: server.js
+
+Fin del archivo.

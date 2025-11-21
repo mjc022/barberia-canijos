@@ -1,6 +1,6 @@
 # 🧔 BARBERÍA CANIJOS
 
-Proyecto profesionalizante del Instituto **TECLAB**, desarrollado como sitio web completo para una barbería moderna, combinando **frontend** (HTML, CSS, JS) con un **backend en Node.js** capaz de enviar correos mediante formularios de contacto.
+Proyecto profesionalizante para el Instituto **TECLAB**, desarrollado como sitio web completo para una barbería moderna, combinando **frontend** (HTML, CSS, JS) con un **backend en Node.js** capaz de enviar correos mediante formularios de turnos.
 
 ---
 
@@ -10,8 +10,8 @@ Proyecto profesionalizante del Instituto **TECLAB**, desarrollado como sitio web
 El proyecto abarca la estructura completa de un sitio comercial responsive y funcional:
 
 - **Inicio (Home):** presentación de la barbería, misión, mapa embebido de Google Maps y video institucional.  
-- **Productos:** catálogo visual de servicios y artículos para el cuidado del cabello y la barba.  
-- **Contacto:** formulario con validación, envío de mensajes por correo y enlace directo a WhatsApp.  
+- **servicios:** catálogo visual de servicios y artículos para el cuidado del cabello y la barba.  
+- **turnos:** formulario con validación, envío de mensajes por correo y enlace directo a WhatsApp.  
 
 ---
 
@@ -42,8 +42,8 @@ barberia-canijos/
 │ ├── Tools/
 │ │ └── reset.css
 │ ├── Views/
-│ │ ├── contacto.html
-│ │ ├── productos.html
+│ │ ├── turnos.html
+│ │ ├── servicios.html
 │ │ └── ...
 │ └── index.html
 │
