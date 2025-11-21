@@ -72,14 +72,13 @@ nav a:hover{
     min-height: 260px;
 }
 
-.servicios img{
-    max-width: 140px; /* tamaño máximo en escritorio */
-    width: 100%;      
-    height: auto;
+.servicios img {
+    width: 140px;     /* fijo */
+    height: 140px;    /* fijo */
     object-fit: contain;
-    display: block;
     margin-bottom: 0.5rem;
 }
+
 
 
 .producto-precio{
